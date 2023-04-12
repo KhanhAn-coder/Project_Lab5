@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
+        int count = 0;
         switch (id){
             case R.id.deleteAll:
                 if (phoneList.size()==0){
@@ -88,10 +89,20 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.check:
-                for (int i =0;i<=phoneList.size()-1;i++){
+                if(item.getTitle().equals("Check All")){
+                    for (int i =0;i<=phoneList.size()-1;i++){
                         phoneList.get(i).setCheck(true);
                         myAdapter.notifyItemChanged(i);
+                    }
+                    item.setTitle("Uncheck All");
+                }else if (item.getTitle().equals("Uncheck All")) {
+                    for (int i = 0; i <= phoneList.size() - 1; i++) {
+                        phoneList.get(i).setCheck(false);
+                        myAdapter.notifyItemChanged(i);
+                    }
+                    item.setTitle("Check All");
                 }
+
                 break;
             case R.id.deleteSelected:
                 for(int i = phoneList.size()-1; i>= 0;i--){

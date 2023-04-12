@@ -7,7 +7,7 @@
 
     <item
         android:id="@+id/check"
-        android:title="Check All/UnCheck All"/>
+        android:title="Check All"/>
 
     <item
         android:id="@+id/deleteSelected"
