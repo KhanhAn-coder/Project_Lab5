@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/ItemAdd"
+        android:title="Add Item"
+        android:icon="@drawable/ic_baseline_add_24"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/ItemSwitch"
+        android:title="Switch"
+        app:actionViewClass="android.widget.Switch"
+        app:showAsAction="always"
+        android:checked="false"/>
+    <item
+        android:id="@+id/RemoveAll"
+        android:title="Remove All"/>
+
+
+</menu>

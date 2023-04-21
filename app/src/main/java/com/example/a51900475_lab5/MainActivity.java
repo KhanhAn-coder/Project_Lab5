@@ -1,11 +1,13 @@
 package com.example.a51900475_lab5;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -81,12 +83,28 @@ public class MainActivity extends AppCompatActivity {
         int count = 0;
         switch (id){
             case R.id.deleteAll:
-                if (phoneList.size()==0){
-                    Toast.makeText(MainActivity.this, "Empty List", Toast.LENGTH_SHORT).show();
-                }else {
-                    phoneList.clear();
-                    myAdapter.notifyDataSetChanged();
-                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("Do you want to delete all items ?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (phoneList.size()==0){
+                            Toast.makeText(MainActivity.this, "Empty List", Toast.LENGTH_SHORT).show();
+                        }else {
+                            phoneList.clear();
+                            myAdapter.notifyDataSetChanged();
+                        }
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
                 break;
             case R.id.check:
                 if(item.getTitle().equals("Check All")){
